@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SpeedMeter</string>
+
+    <string name="enabling">Initializing…</string>
+    <string name="stop">Stop</string>
+    <string name="time_separator">-</string>
+    <string name="understood">I understand</string>
+    <string name="summary_title">Session details</string>
+    <string name="summary_section_title_times">Start - end times</string>
+    <string name="summary_section_title_duration">Total duration</string>
+    <string name="summary_section_title_distance">Total distance</string>
+    <string name="summary_section_title_speed">Average speed</string>
+    <string name="location_explanation_title">Location permission</string>
+    <string name="location_explanation_msg">All speed calculations performed by the app are based on data retrieved by your device\'s GPS. That\'s why you need to allow the app to use GPS.</string>
+    <string name="gps_mandatory_title">GPS activation</string>
+    <string name="gps_mandatory_msg">You need to enable your GPS to use this feature.</string>
+    <string name="error">Error</string>
+    <string name="connection_error_message">Failed to connect to Google API.</string>
+    <string name="channel_description">Speedmeter running</string>
+    <string name="tracking_location_notification">Total tracking of your trip</string>
+</resources>
