@@ -19,10 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
-import ai.rounds.speedmeter.R;
-import ai.rounds.speedmeter.utils.PermissionHelper;
-import ai.rounds.speedmeter.repo.TrackerRepo;
-import ai.rounds.speedmeter.ui.speed.SpeedViewActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -30,6 +26,11 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+
+import ai.rounds.speedmeter.R;
+import ai.rounds.speedmeter.repo.TrackerRepo;
+import ai.rounds.speedmeter.ui.speed.SpeedViewActivity;
+import ai.rounds.speedmeter.utils.PermissionHelper;
 
 /**
  * Service dedicated to navigation related data retrieving and calculation
@@ -72,6 +73,7 @@ public class SpeedTrackingService extends Service implements com.google.android.
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d("=====", "SpeedTrackingService onCreate");
         Log.i("dev", "SpeedTrackingService started.");
 
         if (PermissionHelper.hasLocationPermission(this)) {
@@ -109,6 +111,7 @@ public class SpeedTrackingService extends Service implements com.google.android.
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        Log.d("=====", "GoogleApiClient connected");
         Notification trackingLocation = createNotification();
         startForeground(NOTIFICATION_ID, trackingLocation);
         startLocationUpdates();
@@ -116,11 +119,13 @@ public class SpeedTrackingService extends Service implements com.google.android.
 
     @Override
     public void onConnectionSuspended(int i) {
+        Log.d("=====", "GoogleApiClient connection suspended");
         stopLocationUpdates();
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d("SpeedTrackingService", "GoogleApiClient connection failed: " + connectionResult.getErrorMessage());
         Notification notif = new NotificationCompat.Builder(getBaseContext(), CHANNEL_ID)
                 .setContentTitle(getString(R.string.error))
                 .setContentText(getString(R.string.connection_error_message))
@@ -132,6 +137,7 @@ public class SpeedTrackingService extends Service implements com.google.android.
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        Log.d("=====", "Location changed: " + location.getSpeed());
         if (isBetterLocation(location, lastLocation)) {
             if (lastLocation != null) {
                 float speed = location.getSpeed();
@@ -155,6 +161,7 @@ public class SpeedTrackingService extends Service implements com.google.android.
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
+        Log.d("=====", "GoogleApiClient built");
     }
 
     private Notification createNotification() {
@@ -177,6 +184,7 @@ public class SpeedTrackingService extends Service implements com.google.android.
 
     @SuppressLint("MissingPermission")
     private void startLocationUpdates() {
+        Log.d("=====", "Starting location updates");
         // Building the location request
         LocationRequest locationRequest = new LocationRequest();
         locationRequest.setInterval(TIME_INTERVAL_BASE);
