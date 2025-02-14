@@ -27,6 +27,22 @@ public class Session {
      * The total distance of the session
      */
     private float averageSpeed;
+    /**
+     * The start latitude of the session
+     */
+    private double startLatitude;
+    /**
+     * The start longitude of the session
+     */
+    private double startLongitude;
+    /**
+     * The end latitude of the session
+     */
+    private double endLatitude;
+    /**
+     * The end longitude of the session
+     */
+    private double endLongitude;
 
     /**
      * Constructor
@@ -117,6 +133,78 @@ public class Session {
      */
     public void setAverageSpeed(float averageSpeed) {
         this.averageSpeed = averageSpeed;
+    }
+
+    /**
+     * Gets the session's start latitude
+     *
+     * @return The session's start latitude
+     */
+    public double getStartLatitude() {
+        return startLatitude;
+    }
+
+    /**
+     * Sets the session's start latitude
+     *
+     * @param startLatitude The start latitude to be set
+     */
+    public void setStartLatitude(double startLatitude) {
+        this.startLatitude = startLatitude;
+    }
+
+    /**
+     * Gets the session's start longitude
+     *
+     * @return The session's start longitude
+     */
+    public double getStartLongitude() {
+        return startLongitude;
+    }
+
+    /**
+     * Sets the session's start longitude
+     *
+     * @param startLongitude The start longitude to be set
+     */
+    public void setStartLongitude(double startLongitude) {
+        this.startLongitude = startLongitude;
+    }
+
+    /**
+     * Gets the session's end latitude
+     *
+     * @return The session's end latitude
+     */
+    public double getEndLatitude() {
+        return endLatitude;
+    }
+
+    /**
+     * Sets the session's end latitude
+     *
+     * @param endLatitude The end latitude to be set
+     */
+    public void setEndLatitude(double endLatitude) {
+        this.endLatitude = endLatitude;
+    }
+
+    /**
+     * Gets the session's end longitude
+     *
+     * @return The session's end longitude
+     */
+    public double getEndLongitude() {
+        return endLongitude;
+    }
+
+    /**
+     * Sets the session's end longitude
+     *
+     * @param endLongitude The end longitude to be set
+     */
+    public void setEndLongitude(double endLongitude) {
+        this.endLongitude = endLongitude;
     }
 
     @Override

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/app_margin"
@@ -39,13 +38,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_toRightOf="@+id/txtv_session_time_separator" />
         </RelativeLayout>
-
-
     </LinearLayout>
 
-
     <LinearLayout style="@style/AppTheme.Summary.Section">
-
         <TextView
             style="@style/AppTheme.Summary.Section.Title"
             android:fontFamily="@font/digital_7_regular"
@@ -55,11 +50,9 @@
             android:id="@+id/txtv_session_duration"
             style="@style/AppTheme.Summary.Section.Data"
             android:fontFamily="@font/digital_7_regular" />
-
     </LinearLayout>
 
     <LinearLayout style="@style/AppTheme.Summary.Section">
-
         <TextView
             style="@style/AppTheme.Summary.Section.Title"
             android:fontFamily="@font/digital_7_regular"
@@ -72,7 +65,6 @@
     </LinearLayout>
 
     <LinearLayout style="@style/AppTheme.Summary.Section">
-
         <TextView
             style="@style/AppTheme.Summary.Section.Title"
             android:fontFamily="@font/digital_7_regular"
@@ -80,9 +72,32 @@
 
         <TextView
             android:id="@+id/txtv_session_speed"
-            android:fontFamily="@font/digital_7_regular"
-            style="@style/AppTheme.Summary.Section.Data"/>
+            style="@style/AppTheme.Summary.Section.Data"
+            android:fontFamily="@font/digital_7_regular"/>
+    </LinearLayout>
 
+    <LinearLayout style="@style/AppTheme.Summary.Section">
+        <TextView
+            style="@style/AppTheme.Summary.Section.Title"
+            android:fontFamily="@font/digital_7_regular"
+            android:text="@string/summary_section_title_start_location" />
+
+        <TextView
+            android:id="@+id/txtv_start_location"
+            style="@style/AppTheme.Summary.Section.Data"
+            android:fontFamily="@font/digital_7_regular"/>
+    </LinearLayout>
+
+    <LinearLayout style="@style/AppTheme.Summary.Section">
+        <TextView
+            style="@style/AppTheme.Summary.Section.Title"
+            android:fontFamily="@font/digital_7_regular"
+            android:text="@string/summary_section_title_end_location" />
+
+        <TextView
+            android:id="@+id/txtv_end_location"
+            style="@style/AppTheme.Summary.Section.Data"
+            android:fontFamily="@font/digital_7_regular"/>
     </LinearLayout>
 
 </LinearLayout>

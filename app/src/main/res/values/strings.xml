@@ -20,4 +20,6 @@
     <string name="connection_error_message">Failed to connect to Google API.</string>
     <string name="channel_description">Speedmeter running</string>
     <string name="tracking_location_notification">Total tracking of your trip</string>
+    <string name="summary_section_title_start_location">Start Location</string>
+    <string name="summary_section_title_end_location">End Location</string>
 </resources>

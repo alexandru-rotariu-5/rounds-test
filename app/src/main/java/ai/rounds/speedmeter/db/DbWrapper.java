@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class  DbWrapper extends SQLiteOpenHelper {
 
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 3;
 
     private static final String DB_NAME = "speed_meter.db";
 
@@ -51,7 +51,11 @@ public class  DbWrapper extends SQLiteOpenHelper {
                 SessionEntry.COLUMN_NAME_START_TIME + TYPE_INTEGER + COMMA_SEPARATOR +
                 SessionEntry.COLUMN_NAME_END_TIME + TYPE_INTEGER + COMMA_SEPARATOR +
                 SessionEntry.COLUMN_NAME_DISTANCE + TYPE_REAL + COMMA_SEPARATOR +
-                SessionEntry.COLUMN_NAME_AVERAGE_SPEED + TYPE_REAL +
+                SessionEntry.COLUMN_NAME_AVERAGE_SPEED + TYPE_REAL + COMMA_SEPARATOR +
+                SessionEntry.COLUMN_NAME_START_LATITUDE + TYPE_REAL + COMMA_SEPARATOR +
+                SessionEntry.COLUMN_NAME_START_LONGITUDE + TYPE_REAL + COMMA_SEPARATOR +
+                SessionEntry.COLUMN_NAME_END_LATITUDE + TYPE_REAL + COMMA_SEPARATOR +
+                SessionEntry.COLUMN_NAME_END_LONGITUDE + TYPE_REAL +
                 " );";
     }
 
@@ -65,5 +69,9 @@ public class  DbWrapper extends SQLiteOpenHelper {
         public static final String COLUMN_NAME_END_TIME = "end_time";
         public static final String COLUMN_NAME_DISTANCE = "distance";
         public static final String COLUMN_NAME_AVERAGE_SPEED = "average_speed";
+        public static final String COLUMN_NAME_START_LATITUDE = "start_latitude";
+        public static final String COLUMN_NAME_START_LONGITUDE = "start_longitude";
+        public static final String COLUMN_NAME_END_LATITUDE = "end_latitude";
+        public static final String COLUMN_NAME_END_LONGITUDE = "end_longitude";
     }
 }
