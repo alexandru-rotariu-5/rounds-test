@@ -215,6 +215,10 @@ public class Session {
                 ", mEndTime=" + endTime +
                 ", mDistance=" + distance +
                 ", mAverageSpeed=" + averageSpeed +
+                ", mStartLatitude=" + startLatitude +
+                ", mStartLongitude=" + startLongitude +
+                ", mEndLatitude=" + endLatitude +
+                ", mEndLongitude=" + endLongitude +
                 '}';
     }
 }

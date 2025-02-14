@@ -19,6 +19,12 @@ object TrackerRepo {
      */
     private val speedRecords = mutableListOf<Float>()
 
+    /** List of start location records (latitude, longitude). */
+    private val startLocationRecords = mutableListOf<Pair<Double, Double>>()
+
+    /** List of end location records (latitude, longitude). */
+    private val endLocationRecords = mutableListOf<Pair<Double, Double>>()
+
     /**
      * Current tracking session
      */
@@ -103,6 +109,32 @@ object TrackerRepo {
     @JvmStatic
     val currentSessionId: String?
         get() = session?.id
+
+    /**
+     * Sets the start location coordinates for the current session
+     *
+     * @param latitude Starting latitude
+     * @param longitude Starting longitude
+     * @throws IllegalStateException if no session is initialized
+     */
+    @Synchronized
+    @JvmStatic
+    fun setStartLocation(latitude: Double, longitude: Double) {
+        startLocationRecords.add(latitude to longitude)
+    }
+
+    /**
+     * Sets the end location coordinates for the current session
+     *
+     * @param latitude Ending latitude
+     * @param longitude Ending longitude
+     * @throws IllegalStateException if no session is initialized
+     */
+    @Synchronized
+    @JvmStatic
+    fun setEndLocation(latitude: Double, longitude: Double) {
+        startLocationRecords.add(latitude to longitude)
+    }
 
     /**
      * Ends the tracking session in progress and saves it to the database

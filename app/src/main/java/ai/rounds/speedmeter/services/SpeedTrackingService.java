@@ -137,21 +137,32 @@ public class SpeedTrackingService extends Service implements com.google.android.
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        Log.d("=====", "Location changed: " + location.getSpeed());
+        Log.d("=====", "Location changed: " + location.getLatitude() + ", " + location.getLongitude());
+
         if (isBetterLocation(location, lastLocation)) {
-            if (lastLocation != null) {
-                float speed = location.getSpeed();
-
-                TrackerRepo.addDistance(location.distanceTo(lastLocation));
-                TrackerRepo.addSpeed(speed);
-
-                Intent speedUpdateIntent = new Intent(INTENT_ACTION_SPEED_UPDATE);
-                speedUpdateIntent.putExtra(EXTRA_SPEED, speed);
-                speedUpdateIntent.putExtra(EXTRA_PROVIDER, location.getProvider() + " " + Math.round(location.getSpeed()));
-                sendBroadcast(speedUpdateIntent);
+            if (lastLocation == null) {
+                // Add the first recorded location to startLocationRecords
+                TrackerRepo.setEndLocation(location.getLatitude(), location.getLongitude());
             }
 
+            // Add distance and speed updates
+            if (lastLocation != null) {
+                float speed = location.getSpeed();
+                TrackerRepo.addDistance(location.distanceTo(lastLocation));
+                TrackerRepo.addSpeed(speed);
+            }
+
+            // Update last location
             lastLocation = location;
+
+            // Always update end location
+            TrackerRepo.setEndLocation(location.getLatitude(), location.getLongitude());
+
+            // Send speed update broadcast
+            Intent speedUpdateIntent = new Intent(INTENT_ACTION_SPEED_UPDATE);
+            speedUpdateIntent.putExtra(EXTRA_SPEED, location.getSpeed());
+            speedUpdateIntent.putExtra(EXTRA_PROVIDER, location.getProvider() + " " + Math.round(location.getSpeed()));
+            sendBroadcast(speedUpdateIntent);
         }
     }
 
